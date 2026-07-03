@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrigidFlow | Cold Storage & Warehouse Vacancy Dashboard</title>
+    <meta name="description" content="Real-time vacancy tracking and capacity management for cold chain logistics and warehouse storage solutions across rural and semi-urban India.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+    </script>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation & KPIs -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-snowflake frost-effect"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>FrigidFlow</h1>
+                    <span>Logistics Terminal</span>
+                </div>
+            </div>
+
+            <!-- Main Navigation Tabs -->
+            <nav class="sidebar-menu">
+                <button class="nav-item active" data-view="dashboard">
+                    <i class="fa-solid fa-chart-line"></i> Dashboard
+                </button>
+                <button class="nav-item" data-view="pipelines">
+                    <i class="fa-solid fa-network-wired"></i> Ingestion Pipelines
+                </button>
+            </nav>
+
+            <!-- KPI Cards Section -->
+            <div class="kpis-section">
+                <h3>System Overview</h3>
+                <div class="kpi-card" id="kpi-total-vacant">
+                    <div class="kpi-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <div class="kpi-info">
+                        <span class="kpi-title">Vacant Capacity</span>
+                        <span class="kpi-value" id="val-vacant-pallets">0</span>
+                        <span class="kpi-subtitle">Pallet Spaces</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card" id="kpi-vacancy-rate">
+                    <div class="kpi-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="kpi-info">
+                        <span class="kpi-title">Average Vacancy</span>
+                        <span class="kpi-value" id="val-vacancy-rate">0%</span>
+                        <span class="kpi-subtitle">Of Total Capacity</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card" id="kpi-avg-price">
+                    <div class="kpi-icon"><i class="fa-solid fa-tags"></i></div>
+                    <div class="kpi-info">
+                        <span class="kpi-title">Avg. Daily Price</span>
+                        <span class="kpi-value" id="val-avg-price">₹0.00</span>
+                        <span class="kpi-subtitle">Per Pallet Space</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card" id="kpi-active-facilities">
+                    <div class="kpi-icon"><i class="fa-solid fa-warehouse"></i></div>
+                    <div class="kpi-info">
+                        <span class="kpi-title">Active Facilities</span>
+                        <span class="kpi-value" id="val-active-count">0</span>
+                        <span class="kpi-subtitle">Registered Nodes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Form Button Trigger -->
+            <div class="sheet-notice">
+                <div class="notice-header">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>Automatic Updates</span>
+                </div>
+                <p>Data synchronizes daily from the owner submission sheet response.</p>
+                <button class="btn btn-secondary btn-sm block" id="btn-open-form-modal">
+                    <i class="fa-solid fa-plus-circle"></i> Add Facility Form
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            
+            <!-- VIEW 1: Dashboard Panel -->
+            <div id="view-dashboard" class="view-pane">
+                
+                <!-- Header Search Bar & Global Controls -->
+                <header class="main-header">
+                    <div class="search-bar-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Search by warehouse name, owner, city, or state...">
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="btn-toggle-filters">
+                            <i class="fa-solid fa-sliders"></i> Filters
+                        </button>
+                        <button class="btn-icon" id="btn-toggle-view" title="Toggle Layout (Grid/List)">
+                            <i class="fa-solid fa-list-ul"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Filters Drawer (Expandable) -->
+                <section class="filters-drawer closed" id="filters-drawer">
+                    <div class="filters-grid">
+                        <!-- Temperature Category -->
+                        <div class="filter-group">
+                            <label>Storage Temperature Zone</label>
+                            <div class="checkbox-buttons">
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" name="temp-zone" value="Deep Freeze">
+                                    <span class="btn-label"><i class="fa-regular fa-snowflake"></i> Deep Freeze</span>
+                                </label>
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" name="temp-zone" value="Chilled">
+                                    <span class="btn-label"><i class="fa-solid fa-temperature-half"></i> Chilled</span>
+                                </label>
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" name="temp-zone" value="Ambient">
+                                    <span class="btn-label"><i class="fa-solid fa-sun"></i> Ambient</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Slider -->
+                        <div class="filter-group">
+                            <label for="price-range">Max Daily Rate (₹/Pallet): <span id="price-val">Any</span></label>
+                            <div class="range-slider-container">
+                                <input type="range" id="price-range" min="0" max="300" step="5" value="300">
+                                <div class="slider-marks">
+                                    <span>₹0</span>
+                                    <span>₹150</span>
+                                    <span>₹300</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Min Vacancy Slider -->
+                        <div class="filter-group">
+                            <label for="capacity-range">Min Available Capacity: <span id="capacity-val">Any</span></label>
+                            <div class="range-slider-container">
+                                <input type="range" id="capacity-range" min="0" max="10000" step="100" value="0">
+                                <div class="slider-marks">
+                                    <span>0</span>
+                                    <span>5K</span>
+                                    <span>10K+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Verification Status Filter -->
+                        <div class="filter-group">
+                            <label>Verification Category</label>
+                            <div class="checkbox-buttons">
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" name="source-type" value="Government Verified">
+                                    <span class="btn-label"><i class="fa-solid fa-circle-check"></i> Government</span>
+                                </label>
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" name="source-type" value="Crowdsourced">
+                                    <span class="btn-label"><i class="fa-solid fa-users"></i> Crowdsourced</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Special Certifications / Amenities -->
+                        <div class="filter-group col-span-2">
+                            <label>Amenities & Certifications</label>
+                            <div class="tags-group">
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="amenity" value="HACCP Certified">
+                                    <span>HACCP Certified</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="amenity" value="ISO 22000">
+                                    <span>ISO 22000</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="amenity" value="24/7 Security">
+                                    <span>24/7 Security</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="amenity" value="Backup Power Generator">
+                                    <span>Backup Power</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="amenity" value="Loading Docks">
+                                    <span>Loading Docks</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="amenity" value="Cross-Docking">
+                                    <span>Cross-Docking</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drawer-actions">
+                        <button class="btn btn-secondary btn-sm" id="btn-reset-filters">Reset Filters</button>
+                        <button class="btn btn-primary btn-sm" id="btn-apply-filters">Close Filters</button>
+                    </div>
+                </section>
+
+                <!-- Dashboard Analytics & Map Section -->
+                <section class="dashboard-analytics">
+                    <!-- Interactive Logistics Map -->
+                    <div class="card map-card">
+                        <div class="card-header">
+                            <h4><i class="fa-solid fa-map-location-dot"></i> Geographical Distribution & Nodes (India)</h4>
+                            <span class="badge badge-teal">Live Search Sync</span>
+                        </div>
+                        <div class="card-body map-container">
+                            <div class="svg-map-wrapper" id="map-wrapper">
+                                <div class="map-loading">
+                                    <i class="fa-solid fa-spinner fa-spin"></i> Loading Interactive Logistics Network...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Card -->
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h4><i class="fa-solid fa-chart-simple"></i> Temperature Distribution & Capacity</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="vacancyChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Inventory Grid -->
+                <section class="inventory-section">
+                    <div class="inventory-header">
+                        <div class="section-title">
+                            <h2>Available Warehouse Inventory</h2>
+                            <span id="inventory-count">Showing 0 facilities</span>
+                        </div>
+                        <div class="sorting-controls">
+                            <label for="sort-select">Sort by:</label>
+                            <select id="sort-select">
+                                <option value="vacancy-desc">Highest Vacancy</option>
+                                <option value="vacancy-asc">Lowest Vacancy</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="name-asc">Facility Name</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Main Grid List Container -->
+                    <div class="inventory-grid" id="inventory-grid">
+                        <!-- Cards will be dynamically injected here -->
+                    </div>
+                </section>
+            </div>
+
+
+            <!-- VIEW 2: Data Ingestion Pipelines Panel -->
+            <div id="view-pipelines" class="view-pane hidden">
+                <header class="pipeline-header">
+                    <h2>Logistics Data Pipelines</h2>
+                    <p class="text-secondary">Manage data synchronization from crowdsourced Google Sheets and official government databases.</p>
+                </header>
+
+                <div class="pipeline-grid">
+                    <!-- Government Data Integration Panel -->
+                    <div class="card gov-sync-card">
+                        <div class="card-header">
+                            <h4><i class="fa-solid fa-building-columns"></i> Government Data Integration</h4>
+                            <span class="badge badge-gov"><i class="fa-solid fa-circle-check"></i> Connected</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-15">Load authentic listings from official Indian government databases. This parses and merges data into the active static index.</p>
+                            
+                            <div class="form-group mb-15">
+                                <label for="gov-source-select">Official Data Source</label>
+                                <select id="gov-source-select" class="btn-block">
+                                    <option value="National Horticulture Board (NHB)">National Horticulture Board (NHB) - Cold Chain Directory</option>
+                                    <option value="MoFPI Portal">MoFPI Portal - Approved Cold Chain Projects</option>
+                                    <option value="eNAM / Agmarknet">eNAM / Agmarknet - Agricultural Warehouses</option>
+                                    <option value="Data.gov.in (OGD)">Data.gov.in (OGD Platform) - Registered Cold Storages</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" id="btn-sync-gov">
+                                <i class="fa-solid fa-sync"></i> Sync & Merge Gov Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Terminal Output Console -->
+                    <div class="card terminal-card col-span-2">
+                        <div class="card-header">
+                            <h4><i class="fa-solid fa-terminal"></i> Ingestion Compiler Console (Static Index Rebuild)</h4>
+                            <span class="term-status-indicator pulse-light">Online</span>
+                        </div>
+                        <div class="card-body terminal-body">
+                            <div class="terminal-container" id="terminal-log">
+                                <div class="terminal-line text-muted">
+                                    <span class="term-time">--:--:--</span> [SYS] Terminal compiler console initialized. Ready for ingestion trigger.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Actions Pipeline Guide -->
+                <div class="card guide-card mt-24">
+                    <div class="card-header">
+                        <h4><i class="fa-brands fa-github"></i> Production Ingestion Setup Guide (Google Form & GitHub Actions)</h4>
+                    </div>
+                    <div class="card-body guide-body">
+                        <div class="guide-steps">
+                            <div class="step-card">
+                                <div class="step-num">1</div>
+                                <h5>Google Form & Sheet</h5>
+                                <p>Create a Google Form with fields: <em>Warehouse Name, Owner, Email, Phone, City, State, Type, Capacity, Vacant, Price, Amenities</em>. Set responses to output to a Google Sheet.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">2</div>
+                                <h5>Publish Responses</h5>
+                                <p>In the Google Sheet responses tab, go to <strong>File > Share > Publish to web</strong>. Under Link options, choose the responses sheet and format as <strong>Comma-separated values (.csv)</strong>.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">3</div>
+                                <h5>Set Action Secrets</h5>
+                                <p>Copy the published CSV URL. In your GitHub Repository settings, navigate to <strong>Secrets and variables > Actions</strong> and create a secret named <code>GOOGLE_SHEET_CSV_URL</code> with your URL.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">4</div>
+                                <h5>Automated Action</h5>
+                                <p>A daily GitHub Action running <a href="file:///.github/workflows/update_dashboard.yml" class="code-link">update_dashboard.yml</a> runs the Python index compiler to fetch sheet updates, de-duplicate official and crowdsourced nodes, and update the directory index.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Details View Drawer / Modal -->
+    <div class="modal-overlay" id="detail-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="btn-close-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-grid">
+                <div class="modal-details-col">
+                    <div class="modal-header-section">
+                        <span class="temp-badge" id="modal-temp-badge">Deep Freeze</span>
+                        <h2 id="modal-warehouse-name">Warehouse Name</h2>
+                        <p class="modal-location" id="modal-location"><i class="fa-solid fa-location-dot"></i> Chicago, IL</p>
+                    </div>
+
+                    <div class="progress-section">
+                        <div class="progress-details">
+                            <span>Available Pallets: <strong id="modal-vacant-num">0</strong></span>
+                            <span>Total Pallets: <strong id="modal-total-num">0</strong></span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="modal-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-percentage-note" id="modal-vacancy-pct">0% vacant capacity available</div>
+                    </div>
+
+                    <div class="modal-spec-cards">
+                        <div class="spec-card">
+                            <span class="spec-label">Daily Price</span>
+                            <span class="spec-value" id="modal-price">$0.00</span>
+                            <span class="spec-unit">per pallet / day</span>
+                        </div>
+                        <div class="spec-card">
+                            <span class="spec-label">Temp Range</span>
+                            <span class="spec-value" id="modal-temp-range">-18°C to -25°C</span>
+                            <span class="spec-unit">regulated zone</span>
+                        </div>
+                        <div class="spec-card">
+                            <span class="spec-label">Last Updated</span>
+                            <span class="spec-value" id="modal-updated">2026-07-03</span>
+                            <span class="spec-unit">by facility owner</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-amenities-section">
+                        <h4>Standard & Certified Features</h4>
+                        <ul class="features-list" id="modal-features-list">
+                            <!-- Injected checkboxes -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="modal-contact-col">
+                    <h3>Secure Booking Inquiry</h3>
+                    <p class="contact-desc">Submit your reservation details below. The warehouse operator will receive an instant notification.</p>
+                    
+                    <form class="contact-form" id="booking-inquiry-form" onsubmit="event.preventDefault(); alert('Booking Inquiry Submitted Successfully! The operator will reach out via email shortly.');">
+                        <div class="form-group">
+                            <label for="contact-name">Your Full Name</label>
+                            <input type="text" id="contact-name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Business Email</label>
+                            <input type="email" id="contact-email" required placeholder="johndoe@logistics.com">
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="booking-pallets">Pallets Needed</label>
+                                <input type="number" id="booking-pallets" required min="1" placeholder="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-date">Start Date</label>
+                                <input type="date" id="booking-date" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-notes">Additional Specs / Requirements</label>
+                            <textarea id="booking-notes" placeholder="Specify loading requirements, cross-docking requests, or temperature parameters..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fa-solid fa-paper-plane"></i> Send Reservation Inquiry
+                        </button>
+                    </form>
+
+                    <div class="operator-direct">
+                        <span>Or contact operator directly:</span>
+                        <div class="direct-details">
+                            <p><i class="fa-solid fa-user-tie"></i> <span id="modal-owner-name">Sarah Jenkins</span></p>
+                            <p><i class="fa-solid fa-envelope"></i> <a href="#" id="modal-owner-email">sjenkins@polaris.com</a></p>
+                            <p><i class="fa-solid fa-phone"></i> <span id="modal-owner-phone">+1-555-0199</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Simulated Google Form Owner Submission Modal -->
+    <div class="modal-overlay" id="form-modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close" id="btn-close-form-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="p-30">
+                <h2 style="font-size: 1.45rem; margin-bottom: 8px;"><i class="fa-solid fa-file-invoice"></i> Google Form Response Simulation</h2>
+                <p class="text-secondary mb-20">Submit capacity updates to Google Sheets responses tab. The static index compiler will run in the console.</p>
+                
+                <form id="owner-update-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="form-wh-name">Cold Storage / Warehouse Name</label>
+                        <input type="text" id="form-wh-name" required placeholder="Sahyadri Agri Cold Chain">
+                    </div>
+                    
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="form-owner-name">Owner / Contact Name</label>
+                            <input type="text" id="form-owner-name" required placeholder="Sudhir Patil">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-phone">Contact Phone</label>
+                            <input type="text" id="form-phone" required placeholder="+91-98500-XXXXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-email">Contact Email</label>
+                        <input type="email" id="form-email" required placeholder="spatil@sahyadri.in">
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="form-city">Rural/Semi-urban Hub City</label>
+                            <select id="form-city" required>
+                                <option value="Nashik">Nashik</option>
+                                <option value="Sangli">Sangli</option>
+                                <option value="Nagpur">Nagpur</option>
+                                <option value="Surat">Surat</option>
+                                <option value="Anand">Anand</option>
+                                <option value="Ludhiana">Ludhiana</option>
+                                <option value="Karnal">Karnal</option>
+                                <option value="Alwar">Alwar</option>
+                                <option value="Guntur">Guntur</option>
+                                <option value="Vijayawada">Vijayawada</option>
+                                <option value="Indore">Indore</option>
+                                <option value="Muzaffarpur">Muzaffarpur</option>
+                                <option value="Shimla">Shimla</option>
+                                <option value="Agra">Agra</option>
+                                <option value="Ratnagiri">Ratnagiri</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Bengaluru">Bengaluru</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Jaipur">Jaipur</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Kochi">Kochi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-state">State</label>
+                            <input type="text" id="form-state" required placeholder="Maharashtra">
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="form-storage-type">Storage Type</label>
+                            <select id="form-storage-type">
+                                <option value="Chilled">Chilled (0°C to 4°C)</option>
+                                <option value="Deep Freeze">Deep Freeze (-18°C to -25°C)</option>
+                                <option value="Ambient">Ambient (15°C to 25°C)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-price">Daily Price (₹ / Pallet)</label>
+                            <input type="number" id="form-price" required min="1" placeholder="110">
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="form-total-cap">Total Capacity (Pallets)</label>
+                            <input type="number" id="form-total-cap" required placeholder="10000">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-vacant-cap">Vacant Capacity (Pallets)</label>
+                            <input type="number" id="form-vacant-cap" required placeholder="3200">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Features & Certifications</label>
+                        <div class="tags-group mt-5">
+                            <label class="tag-checkbox"><input type="checkbox" name="form-amenities" value="HACCP Certified" checked><span>HACCP Certified</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="form-amenities" value="ISO 22000"><span>ISO 22000</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="form-amenities" value="24/7 Security" checked><span>24/7 Security</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="form-amenities" value="Backup Power Generator"><span>Backup Power</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="form-amenities" value="Loading Docks" checked><span>Loading Docks</span></label>
+                            <label class="tag-checkbox"><input type="checkbox" name="form-amenities" value="Cross-Docking"><span>Cross-Docking</span></label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-10">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Submit Update to Sheet Responses
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Module Script -->
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

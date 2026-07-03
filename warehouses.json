@@ -1,0 +1,826 @@
+[
+  {
+    "name": "Sahyadri Farmers Producer Cold Chain",
+    "owner_name": "Anil Patil",
+    "email": "apatil@sahyadri.coop",
+    "phone": "+91-98500-11223",
+    "location": {
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "formatted": "Nashik, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 19.9975,
+      "lng": 73.7898
+    },
+    "total_capacity": 12000,
+    "vacant_capacity": 4500,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 120.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-01 09:00:00",
+    "source": "National Horticulture Board (NHB)",
+    "id": "wh-1"
+  },
+  {
+    "name": "Krishna Valley Agro Cold Storage",
+    "owner_name": "Vasant Patil",
+    "email": "vpatil@krishnavalley.coop",
+    "phone": "+91-98220-44556",
+    "location": {
+      "city": "Sangli",
+      "state": "Maharashtra",
+      "formatted": "Sangli, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 16.8524,
+      "lng": 74.5815
+    },
+    "total_capacity": 8000,
+    "vacant_capacity": 3500,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 100.0,
+    "amenities": [
+      "24/7 Security",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-01 10:15:00",
+    "source": "National Horticulture Board (NHB)",
+    "id": "wh-2"
+  },
+  {
+    "name": "Orange City Cold Storage Terminal",
+    "owner_name": "Devendra Deshmukh",
+    "email": "ddeshmukh@nagpurcold.gov.in",
+    "phone": "+91-98900-77889",
+    "location": {
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "formatted": "Nagpur, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 21.1458,
+      "lng": 79.0882
+    },
+    "total_capacity": 6000,
+    "vacant_capacity": 2000,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 90.0,
+    "amenities": [
+      "HACCP Certified",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-01 11:30:00",
+    "source": "MoFPI Approved",
+    "id": "wh-3"
+  },
+  {
+    "name": "Tapi Foods Processing & Cold Chain",
+    "owner_name": "Suresh Patel",
+    "email": "spatel@tapifoods.co.in",
+    "phone": "+91-98790-22334",
+    "location": {
+      "city": "Surat",
+      "state": "Gujarat",
+      "formatted": "Surat, Gujarat"
+    },
+    "coordinates": {
+      "lat": 21.1702,
+      "lng": 72.8311
+    },
+    "total_capacity": 5000,
+    "vacant_capacity": 1500,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 110.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-01 12:45:00",
+    "source": "MoFPI Approved",
+    "id": "wh-4"
+  },
+  {
+    "name": "Amul Cooperative Cold Terminal",
+    "owner_name": "Karan Patel",
+    "email": "kpatel@amul.coop",
+    "phone": "+91-98250-99887",
+    "location": {
+      "city": "Anand",
+      "state": "Gujarat",
+      "formatted": "Anand, Gujarat"
+    },
+    "coordinates": {
+      "lat": 22.5645,
+      "lng": 72.9289
+    },
+    "total_capacity": 15000,
+    "vacant_capacity": 5000,
+    "temperature_type": "Deep Freeze",
+    "temperature_range": "-18°C to -25°C",
+    "price_per_pallet_day": 160.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-02 08:30:00",
+    "source": "National Horticulture Board (NHB)",
+    "id": "wh-5"
+  },
+  {
+    "name": "Punjab Agri Export Cold Chain",
+    "owner_name": "Gurpreet Singh",
+    "email": "gsingh@pagrexco.gov.in",
+    "phone": "+91-98140-55667",
+    "location": {
+      "city": "Ludhiana",
+      "state": "Punjab",
+      "formatted": "Ludhiana, Punjab"
+    },
+    "coordinates": {
+      "lat": 30.901,
+      "lng": 75.8573
+    },
+    "total_capacity": 10000,
+    "vacant_capacity": 3000,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 130.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-02 09:45:00",
+    "source": "MoFPI Approved",
+    "id": "wh-6"
+  },
+  {
+    "name": "HAFED Integrated Cold Chain Node",
+    "owner_name": "Ramesh Kumar",
+    "email": "rkumar@hafed.gov.in",
+    "phone": "+91-98120-33445",
+    "location": {
+      "city": "Karnal",
+      "state": "Haryana",
+      "formatted": "Karnal, Haryana"
+    },
+    "coordinates": {
+      "lat": 29.6857,
+      "lng": 76.9905
+    },
+    "total_capacity": 7500,
+    "vacant_capacity": 2500,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 120.0,
+    "amenities": [
+      "ISO 22000",
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-02 11:00:00",
+    "source": "MoFPI Approved",
+    "id": "wh-7"
+  },
+  {
+    "name": "Mewar Agri Cold Terminal",
+    "owner_name": "Mahendra Singh",
+    "email": "msingh@mewaragri.in",
+    "phone": "+91-98290-77889",
+    "location": {
+      "city": "Alwar",
+      "state": "Rajasthan",
+      "formatted": "Alwar, Rajasthan"
+    },
+    "coordinates": {
+      "lat": 27.553,
+      "lng": 76.6089
+    },
+    "total_capacity": 9000,
+    "vacant_capacity": 4000,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 80.0,
+    "amenities": [
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-02 12:15:00",
+    "source": "National Horticulture Board (NHB)",
+    "id": "wh-8"
+  },
+  {
+    "name": "Guntur Spices Board Cold Storage",
+    "owner_name": "K. Venkat Rao",
+    "email": "kvrao@spicesboard.gov.in",
+    "phone": "+91-98480-11223",
+    "location": {
+      "city": "Guntur",
+      "state": "Andhra Pradesh",
+      "formatted": "Guntur, Andhra Pradesh"
+    },
+    "coordinates": {
+      "lat": 16.3067,
+      "lng": 80.4365
+    },
+    "total_capacity": 20000,
+    "vacant_capacity": 8500,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 95.0,
+    "amenities": [
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-02 14:30:00",
+    "source": "Spices Board of India",
+    "id": "wh-9"
+  },
+  {
+    "name": "Andhra Fresh Integrated Terminal",
+    "owner_name": "M. Prasad",
+    "email": "mprasad@andhrafresh.in",
+    "phone": "+91-98490-66778",
+    "location": {
+      "city": "Vijayawada",
+      "state": "Andhra Pradesh",
+      "formatted": "Vijayawada, Andhra Pradesh"
+    },
+    "coordinates": {
+      "lat": 16.5062,
+      "lng": 80.648
+    },
+    "total_capacity": 10000,
+    "vacant_capacity": 3200,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 115.0,
+    "amenities": [
+      "HACCP Certified",
+      "24/7 Security",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-02 15:45:00",
+    "source": "MoFPI Approved",
+    "id": "wh-10"
+  },
+  {
+    "name": "Malwa Potato Cold Storage",
+    "owner_name": "Sudhir Sharma",
+    "email": "ssharma@malwacold.in",
+    "phone": "+91-98260-12345",
+    "location": {
+      "city": "Indore",
+      "state": "Madhya Pradesh",
+      "formatted": "Indore, Madhya Pradesh"
+    },
+    "coordinates": {
+      "lat": 22.7196,
+      "lng": 75.8577
+    },
+    "total_capacity": 12000,
+    "vacant_capacity": 4800,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 90.0,
+    "amenities": [
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 09:15:00",
+    "source": "National Horticulture Board (NHB)",
+    "id": "wh-11"
+  },
+  {
+    "name": "Shahi Litchi Cold Storage Node",
+    "owner_name": "Shyam Sunder",
+    "email": "ssunder@litchicold.in",
+    "phone": "+91-98350-55667",
+    "location": {
+      "city": "Muzaffarpur",
+      "state": "Bihar",
+      "formatted": "Muzaffarpur, Bihar"
+    },
+    "coordinates": {
+      "lat": 26.1209,
+      "lng": 85.3647
+    },
+    "total_capacity": 5000,
+    "vacant_capacity": 2200,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 105.0,
+    "amenities": [
+      "HACCP Certified",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 10:30:00",
+    "source": "MoFPI Approved",
+    "id": "wh-12"
+  },
+  {
+    "name": "HPMC Apple Cold Storage",
+    "owner_name": "Rajesh Negi",
+    "email": "rnegi@hpmc.gov.in",
+    "phone": "+91-98160-88990",
+    "location": {
+      "city": "Shimla",
+      "state": "Himachal Pradesh",
+      "formatted": "Shimla, Himachal Pradesh"
+    },
+    "coordinates": {
+      "lat": 31.1048,
+      "lng": 77.1734
+    },
+    "total_capacity": 8000,
+    "vacant_capacity": 1800,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 140.0,
+    "amenities": [
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 11:45:00",
+    "source": "Govt of Himachal Pradesh",
+    "id": "wh-13"
+  },
+  {
+    "name": "Taj Cold Chain Agro Storage",
+    "owner_name": "Vijay Yadav",
+    "email": "vyadav@tajcold.in",
+    "phone": "+91-98370-11223",
+    "location": {
+      "city": "Agra",
+      "state": "Uttar Pradesh",
+      "formatted": "Agra, Uttar Pradesh"
+    },
+    "coordinates": {
+      "lat": 27.1767,
+      "lng": 78.0081
+    },
+    "total_capacity": 25000,
+    "vacant_capacity": 11000,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 85.0,
+    "amenities": [
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 13:00:00",
+    "source": "National Horticulture Board (NHB)",
+    "id": "wh-14"
+  },
+  {
+    "name": "Cochin Port Seafood Cold Storage",
+    "owner_name": "Joseph Thomas",
+    "email": "jthomas@cochinport.gov.in",
+    "phone": "+91-98460-33445",
+    "location": {
+      "city": "Kochi",
+      "state": "Kerala",
+      "formatted": "Kochi, Kerala"
+    },
+    "coordinates": {
+      "lat": 9.9312,
+      "lng": 76.2673
+    },
+    "total_capacity": 12000,
+    "vacant_capacity": 2500,
+    "temperature_type": "Deep Freeze",
+    "temperature_range": "-18°C to -25°C",
+    "price_per_pallet_day": 180.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-03 14:15:00",
+    "source": "MoFPI Approved",
+    "id": "wh-15"
+  },
+  {
+    "name": "Hindustan Cold Chain",
+    "owner_name": "Rajesh Sharma",
+    "email": "rsharma@hindustancold.in",
+    "phone": "+91-98765-43210",
+    "location": {
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "formatted": "Mumbai, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 19.076,
+      "lng": 72.8777
+    },
+    "total_capacity": 5000,
+    "vacant_capacity": 1200,
+    "temperature_type": "Deep Freeze",
+    "temperature_range": "-18°C to -25°C",
+    "price_per_pallet_day": 150.0,
+    "amenities": [
+      "HACCP Certified",
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-01 08:30:00",
+    "source": "Crowdsourced",
+    "id": "wh-16"
+  },
+  {
+    "name": "Apex Ambient & Chill",
+    "owner_name": "Vikram Mehta",
+    "email": "vmehta@apexlogistics.in",
+    "phone": "+91-98234-56789",
+    "location": {
+      "city": "Delhi",
+      "state": "NCR",
+      "formatted": "Delhi, NCR"
+    },
+    "coordinates": {
+      "lat": 28.6139,
+      "lng": 77.209
+    },
+    "total_capacity": 8000,
+    "vacant_capacity": 3400,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 110.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-02 10:15:00",
+    "source": "Crowdsourced",
+    "id": "wh-17"
+  },
+  {
+    "name": "Deccan Glacier Hub",
+    "owner_name": "Kiran Kumar",
+    "email": "kkumar@deccanglacier.in",
+    "phone": "+91-98450-12345",
+    "location": {
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "formatted": "Bengaluru, Karnataka"
+    },
+    "coordinates": {
+      "lat": 12.9716,
+      "lng": 77.5946
+    },
+    "total_capacity": 3000,
+    "vacant_capacity": 450,
+    "temperature_type": "Deep Freeze",
+    "temperature_range": "-18°C to -25°C",
+    "price_per_pallet_day": 180.0,
+    "amenities": [
+      "HACCP Certified",
+      "24/7 Security",
+      "Backup Power Generator"
+    ],
+    "last_updated": "2026-07-02 14:22:00",
+    "source": "Crowdsourced",
+    "id": "wh-18"
+  },
+  {
+    "name": "Coromandel Fresh Hub",
+    "owner_name": "Priya Nair",
+    "email": "pnair@coromandelfood.in",
+    "phone": "+91-98401-23456",
+    "location": {
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "formatted": "Chennai, Tamil Nadu"
+    },
+    "coordinates": {
+      "lat": 13.0827,
+      "lng": 80.2707
+    },
+    "total_capacity": 6500,
+    "vacant_capacity": 2100,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 130.0,
+    "amenities": [
+      "ISO 22000",
+      "24/7 Security",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-02 16:45:00",
+    "source": "Crowdsourced",
+    "id": "wh-19"
+  },
+  {
+    "name": "Bengal Ambient Warehousing",
+    "owner_name": "Amit Banerjee",
+    "email": "abanerjee@bengalwh.in",
+    "phone": "+91-98300-65432",
+    "location": {
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "formatted": "Kolkata, West Bengal"
+    },
+    "coordinates": {
+      "lat": 22.5726,
+      "lng": 88.3639
+    },
+    "total_capacity": 12000,
+    "vacant_capacity": 5600,
+    "temperature_type": "Ambient",
+    "temperature_range": "15°C to 25°C",
+    "price_per_pallet_day": 65.0,
+    "amenities": [
+      "24/7 Security",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-03 09:05:00",
+    "source": "Crowdsourced",
+    "id": "wh-20"
+  },
+  {
+    "name": "Nizams Cold Storage",
+    "owner_name": "Sanjay Reddy",
+    "email": "sreddy@nizamscold.in",
+    "phone": "+91-98480-98765",
+    "location": {
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "formatted": "Hyderabad, Telangana"
+    },
+    "coordinates": {
+      "lat": 17.385,
+      "lng": 78.4867
+    },
+    "total_capacity": 4500,
+    "vacant_capacity": 150,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 140.0,
+    "amenities": [
+      "HACCP Certified",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 11:10:00",
+    "source": "Crowdsourced",
+    "id": "wh-21"
+  },
+  {
+    "name": "Marwar Deep Freeze",
+    "owner_name": "Arjun Singh",
+    "email": "asingh@marwarstorage.in",
+    "phone": "+91-98290-11223",
+    "location": {
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "formatted": "Jaipur, Rajasthan"
+    },
+    "coordinates": {
+      "lat": 26.9124,
+      "lng": 75.7873
+    },
+    "total_capacity": 4000,
+    "vacant_capacity": 2800,
+    "temperature_type": "Deep Freeze",
+    "temperature_range": "-18°C to -25°C",
+    "price_per_pallet_day": 140.0,
+    "amenities": [
+      "HACCP Certified",
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 13:40:00",
+    "source": "Crowdsourced",
+    "id": "wh-22"
+  },
+  {
+    "name": "Gujarat Logistics Center",
+    "owner_name": "Dinesh Patel",
+    "email": "dpatel@gujaratlog.in",
+    "phone": "+91-98250-44556",
+    "location": {
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "formatted": "Ahmedabad, Gujarat"
+    },
+    "coordinates": {
+      "lat": 23.0225,
+      "lng": 72.5714
+    },
+    "total_capacity": 15000,
+    "vacant_capacity": 8900,
+    "temperature_type": "Ambient",
+    "temperature_range": "15°C to 25°C",
+    "price_per_pallet_day": 60.0,
+    "amenities": [
+      "ISO 22000",
+      "Loading Docks",
+      "Cross-Docking"
+    ],
+    "last_updated": "2026-07-03 15:30:00",
+    "source": "Crowdsourced",
+    "id": "wh-23"
+  },
+  {
+    "name": "Nashik Grape Cold Storage",
+    "owner_name": "Santosh Patil",
+    "email": "spatil@nashikcold.in",
+    "phone": "+91-98500-11111",
+    "location": {
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "formatted": "Nashik, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 19.9975,
+      "lng": 73.7898
+    },
+    "total_capacity": 6000,
+    "vacant_capacity": 1800,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 115.0,
+    "amenities": [
+      "HACCP Certified",
+      "24/7 Security",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 16:10:00",
+    "source": "Crowdsourced",
+    "id": "wh-24"
+  },
+  {
+    "name": "Ratnagiri Mango Cold Chain",
+    "owner_name": "Anant Desai",
+    "email": "adesai@ratnagirifresh.in",
+    "phone": "+91-98220-22222",
+    "location": {
+      "city": "Ratnagiri",
+      "state": "Maharashtra",
+      "formatted": "Ratnagiri, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 16.9902,
+      "lng": 73.312
+    },
+    "total_capacity": 4000,
+    "vacant_capacity": 1200,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 130.0,
+    "amenities": [
+      "HACCP Certified",
+      "ISO 22000",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 17:00:00",
+    "source": "Crowdsourced",
+    "id": "wh-25"
+  },
+  {
+    "name": "Sangli Turmeric Warehouse",
+    "owner_name": "Vijay Mali",
+    "email": "vmali@sanglistorage.in",
+    "phone": "+91-98220-33333",
+    "location": {
+      "city": "Sangli",
+      "state": "Maharashtra",
+      "formatted": "Sangli, Maharashtra"
+    },
+    "coordinates": {
+      "lat": 16.8524,
+      "lng": 74.5815
+    },
+    "total_capacity": 8000,
+    "vacant_capacity": 2400,
+    "temperature_type": "Ambient",
+    "temperature_range": "15°C to 25°C",
+    "price_per_pallet_day": 75.0,
+    "amenities": [
+      "24/7 Security",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 17:45:00",
+    "source": "Crowdsourced",
+    "id": "wh-26"
+  },
+  {
+    "name": "Alwar Onion Storage Hub",
+    "owner_name": "Rajesh Yadav",
+    "email": "ryadav@alwarstorage.in",
+    "phone": "+91-98290-44444",
+    "location": {
+      "city": "Alwar",
+      "state": "Rajasthan",
+      "formatted": "Alwar, Rajasthan"
+    },
+    "coordinates": {
+      "lat": 27.553,
+      "lng": 76.6089
+    },
+    "total_capacity": 10000,
+    "vacant_capacity": 3500,
+    "temperature_type": "Ambient",
+    "temperature_range": "15°C to 25°C",
+    "price_per_pallet_day": 70.0,
+    "amenities": [
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 18:20:00",
+    "source": "Crowdsourced",
+    "id": "wh-27"
+  },
+  {
+    "name": "Karnal Rice & Grain Warehouse",
+    "owner_name": "Baldev Singh",
+    "email": "bsingh@karnalgrain.in",
+    "phone": "+91-98120-55555",
+    "location": {
+      "city": "Karnal",
+      "state": "Haryana",
+      "formatted": "Karnal, Haryana"
+    },
+    "coordinates": {
+      "lat": 29.6857,
+      "lng": 76.9905
+    },
+    "total_capacity": 12000,
+    "vacant_capacity": 4500,
+    "temperature_type": "Ambient",
+    "temperature_range": "15°C to 25°C",
+    "price_per_pallet_day": 85.0,
+    "amenities": [
+      "ISO 22000",
+      "24/7 Security",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 19:10:00",
+    "source": "Crowdsourced",
+    "id": "wh-28"
+  },
+  {
+    "name": "Shimla Apple Cold Chamber",
+    "owner_name": "Sohan Negi",
+    "email": "snegi@shimlaapples.in",
+    "phone": "+91-98160-66666",
+    "location": {
+      "city": "Shimla",
+      "state": "Himachal Pradesh",
+      "formatted": "Shimla, Himachal Pradesh"
+    },
+    "coordinates": {
+      "lat": 31.1048,
+      "lng": 77.1734
+    },
+    "total_capacity": 5000,
+    "vacant_capacity": 950,
+    "temperature_type": "Chilled",
+    "temperature_range": "0°C to 4°C",
+    "price_per_pallet_day": 135.0,
+    "amenities": [
+      "24/7 Security",
+      "Backup Power Generator",
+      "Loading Docks"
+    ],
+    "last_updated": "2026-07-03 20:05:00",
+    "source": "Crowdsourced",
+    "id": "wh-29"
+  }
+]
