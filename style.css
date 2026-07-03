@@ -44,6 +44,7 @@
 
 body {
     background-color: var(--bg-main);
+    background: radial-gradient(circle at 50% 50%, #0e1526 0%, #04060b 100%);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 14px;
@@ -231,8 +232,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .kpi-card {
-    background: rgba(21, 27, 45, 0.5);
-    border: 1px solid var(--border-color);
+    background: rgba(21, 27, 45, 0.35);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 16px;
     display: flex;
@@ -242,8 +244,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .kpi-card:hover {
     border-color: var(--border-color-active);
-    transform: translateX(4px);
-    background: rgba(21, 27, 45, 0.8);
+    transform: translateX(4px) translateY(-1px);
+    background: rgba(21, 27, 45, 0.6);
+    box-shadow: 0 4px 16px rgba(0, 242, 254, 0.15);
 }
 
 .kpi-icon {
@@ -566,7 +569,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 .map-container {
     padding: 0;
-    background: radial-gradient(circle at center, #0f162a 0%, #080a12 100%);
+    background: radial-gradient(circle at center, #10162a 0%, #05070d 100%), 
+                repeating-linear-gradient(rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 20px),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 20px);
     overflow: hidden;
 }
 
@@ -699,9 +704,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Facility Cards */
 .facility-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    background: rgba(21, 27, 45, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -715,16 +721,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 4px;
     background: transparent;
     transition: var(--transition-smooth);
 }
 
 .facility-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-color-active);
-    box-shadow: var(--shadow-premium);
-    background-color: var(--bg-card-hover);
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.15);
+    background: rgba(30, 38, 63, 0.65);
 }
 
 .facility-card.Deep-Freeze::before {

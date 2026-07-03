@@ -87,7 +87,7 @@ async function initApp() {
 // 1. Load data from static JSON
 async function loadData() {
     try {
-        const response = await fetch('/data/warehouses.json');
+        const response = await fetch('data/warehouses.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
